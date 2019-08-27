@@ -1,0 +1,70 @@
+.h40 {
+  height: 40px;
+  line-height: 40px;
+  transition: height .3s;
+
+  .drop-down {
+    top: 25px !important;
+    transition: top .3s !important;
+  }
+}
+
+.h0 {
+  height: 0;
+  line-height: 0;
+  transition: height .3s;
+
+  .drop-down {
+    top: -15px !important;
+    transition: top .3s !important;
+  }
+}
+
+.tag-show {
+  height: 23px;
+  transition: height .3s !important;
+}
+
+.tag-hide {
+  height: 0;
+  transition: height .3s !important;
+}
+
+.tabs-wrapper {
+  display: flex;
+  background: #fff;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0.25rem 0.75rem;
+
+  .drop-down {
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0.25rem 0.75rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    transform: translateX(-15px);
+    text-align: center;
+    line-height: 30px;
+    color: #333;
+    cursor: pointer;
+    z-index: 11;
+  }
+
+  .left-tag-wrapper {
+    overflow: hidden;
+    flex: 1;
+  }
+}
+
+.tag-badge {
+  margin-left: 3px;
+  width: 10px;
+
+  .ant-badge-status-dot {
+    width: 10px;
+    height: 10px;
+  }
+}

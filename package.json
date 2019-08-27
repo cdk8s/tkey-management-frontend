@@ -1,0 +1,77 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "cross-env UMI_ENV=dev APP_TYPE=site umi dev",
+    "start:test": "cross-env UMI_ENV=test APP_TYPE=site umi dev",
+    "build": "cross-env UMI_ENV=dev APP_TYPE=site umi build",
+    "build:test": "cross-env UMI_ENV=test APP_TYPE=site umi build",
+    "test": "umi test",
+    "lint:es": "eslint --ext .js src mock tests",
+    "lint:ts": "tslint \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "@types/progress": "^2.0.3",
+    "antd": "^3.22.0",
+    "crypto-random-string": "^3.0.1",
+    "dva": "^2.6.0-beta.6",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "nprogress": "^0.2.0",
+    "qs": "^6.7.0",
+    "react": "^16.8.6",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "^16.8.6",
+    "react-json-view": "^1.19.1",
+    "react-media": "^1.9.2",
+    "umi-request": "^1.0.8"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.8",
+    "@types/jest": "^23.3.12",
+    "@types/lodash": "^4.14.136",
+    "@types/nprogress": "^0.2.0",
+    "@types/qs": "^6.5.3",
+    "@types/random": "^2.1.0",
+    "@types/react": "^16.7.18",
+    "@types/react-custom-scrollbars": "^4.0.5",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-test-renderer": "^16.0.3",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "babel-eslint": "^9.0.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.4.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-config-umi": "^1.4.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "mockjs": "^1.0.1-beta3",
+    "react-test-renderer": "^16.7.0",
+    "roadhog-api-doc": "^1.1.2",
+    "tslint": "^5.12.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^3.6.0",
+    "umi": "^2.8.20",
+    "umi-plugin-react": "^1.8.0",
+    "umi-types": "^0.2.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
