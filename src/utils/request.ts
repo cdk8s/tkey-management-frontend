@@ -4,7 +4,6 @@
  */
 import { extend } from 'umi-request';
 import NProgress from 'nprogress';
-import router from 'umi/router';
 import { notification, message } from 'antd';
 import './../global.less';
 
