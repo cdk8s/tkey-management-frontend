@@ -4,6 +4,7 @@
  */
 import { extend } from 'umi-request';
 import NProgress from 'nprogress';
+import _ from 'lodash';
 import { notification, message } from 'antd';
 import './../global.less';
 
@@ -33,6 +34,7 @@ const codeMessage = {
     503: '服务不可用，服务器暂时过载或维护。',
     504: '网关超时。',
 };
+const hasResponseStatusArray = [400, 401, 403, 500];
 /**
  * 异常处理程序
  */
@@ -41,17 +43,7 @@ const errorHandler = (error: { response: Response }): Response => {
     const { response } = error;
     const { status, url } = response;
     const errorText = codeMessage[response.status] || response.statusText;
-    if (response && response.status && response.status === 404) {
-        notification.error({
-            message: `请求错误 ${status}: ${url}`,
-            description: errorText,
-        });
-    } else if (response && response.status && response.status === 504) {
-        notification.error({
-            message: `请求错误 ${status}: ${url}`,
-            description: errorText,
-        });
-    } else if (response && response.status && response.status !== 200) {
+    if (response && response.status && _.includes(hasResponseStatusArray, response.status)) {
         const responseJson = response.clone().json();
         responseJson.then(res => {
             if (res && res.msg) {
@@ -64,6 +56,11 @@ const errorHandler = (error: { response: Response }): Response => {
             }
         });
         console.log(`请求错误, 状态码：${status},url地址：${url},${errorText}`);
+    } else if (response && response.status && response.status !== 200 && !_.includes(hasResponseStatusArray, response.status)) {
+        notification.error({
+            message: `请求错误 ${status}: ${url}`,
+            description: errorText,
+        });
     } else if (!response) {
         notification.error({
             description: '您的网络发生异常，无法连接服务器',
