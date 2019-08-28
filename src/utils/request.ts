@@ -42,6 +42,8 @@ const errorHandler = (error: { response: Response }): Response => {
     const { response } = error;
     if(response && response.status && response.status === 404){
         router.push('/errorPage')
+    }else if(response && response.status && response.status === 504){
+        router.push('/errorPage')
     } else if (response && response.status && response.status !== 200) {
         const errorText = codeMessage[response.status] || response.statusText;
         const { status, url } = response;
