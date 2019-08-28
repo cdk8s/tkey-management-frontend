@@ -18,7 +18,8 @@ export default function(props: IProps<[]>) {
           for (let i in adaptation.fixed) {
             columns.forEach(item => {
               if (item.dataIndex === i) {
-                item.fixed = adaptation.fixed[i]
+                item.fixed = adaptation.fixed[i].fixed;
+                item.width = adaptation.fixed[i].width;
               }
             });
           }

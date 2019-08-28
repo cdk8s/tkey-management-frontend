@@ -40,13 +40,19 @@ const codeMessage = {
 const errorHandler = (error: { response: Response }): Response => {
     NProgress.done();
     const { response } = error;
+    const { status, url } = response;
+    const errorText = codeMessage[response.status] || response.statusText;
     if (response && response.status && response.status === 404) {
-        router.push('/errorPage');
+        notification.error({
+            message: `请求错误 ${status}: ${url}`,
+            description: errorText,
+        });
     } else if (response && response.status && response.status === 504) {
-        router.push('/errorPage');
+        notification.error({
+            message: `请求错误 ${status}: ${url}`,
+            description: errorText,
+        });
     } else if (response && response.status && response.status !== 200) {
-        const errorText = codeMessage[response.status] || response.statusText;
-        const { status, url } = response;
         const responseJson = response.clone().json();
         responseJson.then(res => {
             if (res && res.msg) {

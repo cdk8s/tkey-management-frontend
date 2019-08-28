@@ -190,7 +190,7 @@ class Index extends Component<any, any> {
         <HehTable
           columns={columns}
           // 当浏览器窗口小与最佳阅读宽度 x, 设置滚动 scroll 之为最佳阅读宽度 x, fixed 标识想要把那些字段固定住
-          adaptation={{ scroll: { x: 2350 }, fixed: { clientName: 'left', operation: 'right' } }}
+          adaptation={{ scroll: { x: 2350 }, fixed: { clientName: { fixed: 'left', width: 250 }, operation: { fixed: 'right', width: 200 } } }}
           getSelectedRowKeys={this.getSelectedRowKeys}
           selectedRowKeys={this.state.selectedRowKeys}
           data={tableList && tableList.data || []}
