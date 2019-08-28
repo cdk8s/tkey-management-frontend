@@ -189,6 +189,7 @@ class Index extends Component<any, any> {
         </Row>
         <HehTable
           columns={columns}
+          adaptation={{ scroll: { x: 2350 }, fixed: { clientName: 'left', operation: 'right' } }}
           getSelectedRowKeys={this.getSelectedRowKeys}
           selectedRowKeys={this.state.selectedRowKeys}
           data={tableList && tableList.data || []}

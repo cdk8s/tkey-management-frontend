@@ -11,7 +11,9 @@ import theme from '@/constants/theme';
 import siderMenu from '@/constants/siderMenu';
 import HehRouterTabs from '@/components/HehRouterTabs';
 import './mainLayout.less';
+
 const { Header, Footer, Sider, Content } = Layout;
+
 interface IMenuItem {
   path: string
   icon: string
@@ -78,7 +80,12 @@ class MainLayout extends Component<IProps> {
         </a>
       </Menu.Item>
       <Menu.Item>
-        <a className='tac'>
+        <a
+          onClick={() => {
+            window.location.href = 'http://sso.cdk8s.com/sso-client-management/logout?redirect_uri=http://www.YouMeek.com';
+          }}
+          className='tac'
+        >
           退出登录
         </a>
       </Menu.Item>

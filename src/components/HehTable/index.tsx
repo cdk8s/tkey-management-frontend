@@ -3,15 +3,37 @@ import { Pagination, Table, Row, Col } from 'antd';
 import { IProps } from './typings';
 
 export default function(props: IProps<[]>) {
-  const { data, columns, tableOptions, pageChange, getSelectedRowKeys, selectedRowKeys } = props;
+  const { data, tableOptions, pageChange, getSelectedRowKeys, selectedRowKeys, adaptation } = props;
+  let { columns } = props;
   const rowSelection = {
     selectedRowKeys,
     onChange: getSelectedRowKeys,
   };
+  const width = document.body.clientWidth;
+
+  function setWidth() {
+    if (adaptation && adaptation.scroll.x) {
+      if (width < adaptation.scroll.x) {
+        if (adaptation.fixed) {
+          for (let i in adaptation.fixed) {
+            columns.forEach(item => {
+              if (item.dataIndex === i) {
+                item.fixed = adaptation.fixed[i]
+              }
+            });
+          }
+        }
+        return adaptation.scroll;
+      }
+    }
+    return {};
+  }
+
   return (
     <Fragment>
       <Table
         {...tableOptions}
+        scroll={setWidth()}
         rowSelection={rowSelection || null}
         dataSource={data && data.list || []}
         columns={columns}
