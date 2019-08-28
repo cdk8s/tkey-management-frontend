@@ -6,6 +6,7 @@ const Exception404 = () => (
     type="404"
     desc='未能连接到后台'
     isNeedBtn={false}
+    isNeedType={false}
   />
 );
 
