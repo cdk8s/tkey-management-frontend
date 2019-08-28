@@ -24,7 +24,7 @@ const config: IConfig = {
     define: constant.constant.devConstant,
     proxy: {
         [constant.constant.devConstant['process.env.API_SERVER']]: {
-            target: 'http://management.cdk8s.com:9095',
+            target: 'http://management.cdk8s.com:90951a',
             pathRewrite: {[`^/${constant.constant.devConstant['process.env.API_SERVER']}`]: ''},
             changeOrigin: true,
         },

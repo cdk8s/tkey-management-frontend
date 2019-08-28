@@ -7,7 +7,10 @@ const plugins: IPlugin[] = [
   ['umi-plugin-react', {
     antd: true,
     dva: true,
-    dynamicImport: { webpackChunkName: true },
+    dynamicImport: {
+        webpackChunkName: true,
+        loadingComponent: './components/PageLoading/index.tsx',
+    },
     title: 'TKey SSO Client 管理系统',
     locale: {
       enable: true,

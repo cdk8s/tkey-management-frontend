@@ -16,6 +16,7 @@ interface IExceptionProps {
   className?: string;
   backText?: React.ReactNode;
   redirect?: string;
+  isNeedBtn?: boolean
 }
 
 class Exception extends Component<IExceptionProps, any> {
@@ -39,6 +40,7 @@ class Exception extends Component<IExceptionProps, any> {
       img,
       actions,
       redirect = '',
+      isNeedBtn = true,
       ...rest
     } = this.props;
     const pageType = type && type in config ? type : '404';
@@ -54,11 +56,16 @@ class Exception extends Component<IExceptionProps, any> {
         <div className='content'>
           <h1>{title || config[pageType].title}</h1>
           <div className='desc'>{desc || config[pageType].desc}</div>
-          <div className='actions'>
-            <Link to={redirect}>
-              <Button type="primary">{backText}</Button>,
-            </Link>
-          </div>
+          {
+            isNeedBtn
+              ? <div className='actions'>
+                <Link to={redirect}>
+                  <Button type="primary">{backText}</Button>,
+                </Link>
+              </div>
+              : null
+          }
+
         </div>
       </div>
     );

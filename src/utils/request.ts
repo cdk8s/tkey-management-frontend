@@ -4,6 +4,7 @@
  */
 import { extend } from 'umi-request';
 import NProgress from 'nprogress';
+import router from 'umi/router';
 import { notification, message } from 'antd';
 import './../global.less';
 
@@ -39,10 +40,12 @@ const codeMessage = {
 const errorHandler = (error: { response: Response }): Response => {
     NProgress.done();
     const { response } = error;
-    const responseJson = response.clone().json();
-    if (response && response.status && response.status !== 200) {
+    if(response && response.status && response.status === 404){
+        router.push('/errorPage')
+    } else if (response && response.status && response.status !== 200) {
         const errorText = codeMessage[response.status] || response.statusText;
         const { status, url } = response;
+        const responseJson = response.clone().json();
         responseJson.then(res => {
             if (res && res.msg) {
                 message.error(res.msg);

@@ -20,7 +20,7 @@ class CodeToTokenLayout extends Component {
           code,
         },
       }).then(res => {
-        if (res.data.redirectUri && res.data.token) {
+        if (res.data && res.data.redirectUri && res.data.token) {
           localStorage.setItem(process.env.LOCAL_STORAGE_TOKEN_KEY || '', res.data.token);
           window.location.href = res.data.redirectUri;
         }

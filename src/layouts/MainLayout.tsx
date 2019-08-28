@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import { Icon, Layout, Menu, Avatar, Dropdown, Drawer, Select, BackTop, LocaleProvider } from 'antd';
+import { Icon, Layout, Menu, Avatar, Dropdown, Drawer, Select, BackTop, ConfigProvider } from 'antd';
 import { connect } from 'dva';
 import _ from 'lodash';
 import router from 'umi/router';
 import classname from 'classnames';
+import zhCN from 'antd/es/locale/zh_CN';
 import Scrollbars from 'react-custom-scrollbars';
 import Media from 'react-media';
-import zh_CN from 'antd/lib/locale-provider/zh_CN';
-
 import theme from '@/constants/theme';
 import siderMenu from '@/constants/siderMenu';
 import HehRouterTabs from '@/components/HehRouterTabs';
 import './mainLayout.less';
-
 const { Header, Footer, Sider, Content } = Layout;
-
 interface IMenuItem {
   path: string
   icon: string
@@ -406,9 +403,9 @@ class MainLayout extends Component<IProps> {
             </Header>
             <Content>
               <HehRouterTabs/>
-              <LocaleProvider locale={zh_CN}>
+              <ConfigProvider locale={zhCN}>
                 {this.props.children}
-              </LocaleProvider>
+              </ConfigProvider>
             </Content>
             <Footer className='tac footer'>https://github.com/cdk8s</Footer>
           </Layout>
