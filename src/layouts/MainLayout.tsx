@@ -82,7 +82,8 @@ class MainLayout extends Component<IProps> {
       <Menu.Item>
         <a
           onClick={() => {
-            window.location.href = 'http://sso.cdk8s.com/sso-client-management/logout?redirect_uri=http://www.YouMeek.com';
+            localStorage.clear();
+            window.location.href = process.env.LOGOUT_URL || '';
           }}
           className='tac'
         >
