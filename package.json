@@ -3,8 +3,10 @@
   "scripts": {
     "start": "cross-env UMI_ENV=dev APP_TYPE=site umi dev",
     "start:test": "cross-env UMI_ENV=test APP_TYPE=site umi dev",
+    "start:prod": "cross-env UMI_ENV=prod APP_TYPE=site umi dev",
     "build": "cross-env UMI_ENV=dev APP_TYPE=site umi build",
     "build:test": "cross-env UMI_ENV=test APP_TYPE=site umi build",
+    "build:prod": "cross-env UMI_ENV=prod APP_TYPE=site umi build",
     "test": "umi test",
     "lint:es": "eslint --ext .js src mock tests",
     "lint:ts": "tslint \"src/**/*.ts\" \"src/**/*.tsx\"",
