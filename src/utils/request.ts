@@ -4,7 +4,7 @@
  */
 import { extend } from 'umi-request';
 import NProgress from 'nprogress';
-import _ from 'lodash';
+import includes from 'lodash/includes';
 import { notification, message } from 'antd';
 import './../global.less';
 
@@ -43,7 +43,7 @@ const errorHandler = (error: { response: Response }): Response => {
     const { response } = error;
     const { status, url } = response;
     const errorText = codeMessage[response.status] || response.statusText;
-    if (response && response.status && _.includes(hasResponseStatusArray, response.status)) {
+    if (response && response.status && includes(hasResponseStatusArray, response.status)) {
         const responseJson = response.clone().json();
         responseJson.then(res => {
             if (res && res.msg) {
@@ -56,7 +56,7 @@ const errorHandler = (error: { response: Response }): Response => {
             }
         });
         console.log(`请求错误, 状态码：${status},url地址：${url},${errorText}`);
-    } else if (response && response.status && response.status !== 200 && !_.includes(hasResponseStatusArray, response.status)) {
+    } else if (response && response.status && response.status !== 200 && !includes(hasResponseStatusArray, response.status)) {
         notification.error({
             message: `请求错误 ${status}: ${url}`,
             description: errorText,

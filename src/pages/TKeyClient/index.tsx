@@ -16,7 +16,7 @@ import {
   Icon,
 } from 'antd';
 import { connect } from 'dva';
-import _ from 'lodash';
+import get from 'lodash/get';
 import cryptoRandomString from 'crypto-random-string';
 import { FormComponentProps } from 'antd/lib/form/Form';
 import SearchForm from '@/components/HehSearch';
@@ -261,13 +261,13 @@ class Index extends Component<any, any> {
         type: 'input',
         id: 'clientName',
         label: '客户端名称',
-        defaultValue: _.get(defaultValue, 'clientName'),
+        defaultValue: get(defaultValue, 'clientName'),
       },
       {
         type: 'input',
         id: 'clientId',
         label: '客户端 Id',
-        defaultValue: _.get(defaultValue, 'clientId'),
+        defaultValue: get(defaultValue, 'clientId'),
         attribute: {
           maxLength: 20,
         },
@@ -284,7 +284,7 @@ class Index extends Component<any, any> {
         type: 'input',
         id: 'clientSecret',
         label: '客户端秘钥',
-        defaultValue: _.get(defaultValue, 'clientSecret'),
+        defaultValue: get(defaultValue, 'clientSecret'),
         operation: <Button onClick={this.randomToClientSecret} size='small' type='primary'>随机生成</Button>,
         attribute: {
           maxLength: 32,
@@ -300,7 +300,7 @@ class Index extends Component<any, any> {
         type: 'input',
         id: 'clientUrl',
         label: '客户端地址',
-        defaultValue: _.get(defaultValue, 'clientUrl'),
+        defaultValue: get(defaultValue, 'clientUrl'),
         attribute: { placeholder: '可以输入正则表达式，限制回调地址' },
         formDecoratorOptions: {
           rules: [
@@ -308,12 +308,12 @@ class Index extends Component<any, any> {
           ],
         },
       },
-      { type: 'input', id: 'clientDesc', label: '客户端描述', defaultValue: _.get(defaultValue, 'clientDesc') },
+      { type: 'input', id: 'clientDesc', label: '客户端描述', defaultValue: get(defaultValue, 'clientDesc') },
       {
         type: 'input',
         id: 'logoUrl',
         label: 'logo 地址',
-        defaultValue: _.get(defaultValue, 'logoUrl'),
+        defaultValue: get(defaultValue, 'logoUrl'),
         formDecoratorOptions: {
           rules: [
             { required: true, message: 'logo 地址为必填项' },
@@ -325,7 +325,7 @@ class Index extends Component<any, any> {
         type: 'inputNumber',
         id: 'ranking',
         label: '排序',
-        defaultValue: _.get(defaultValue, 'ranking'),
+        defaultValue: get(defaultValue, 'ranking'),
         formDecoratorOptions: {
           rules: [
             { required: true, message: '排序为必填项' },
@@ -340,13 +340,13 @@ class Index extends Component<any, any> {
           ],
         },
       },
-      { type: 'input', id: 'remark', label: '备注', defaultValue: _.get(defaultValue, 'remark') },
+      { type: 'input', id: 'remark', label: '备注', defaultValue: get(defaultValue, 'remark') },
       {
         type: 'radio',
         id: 'stateEnum',
         label: '启用状态',
         options: [{ label: '启用', value: 1 }, { label: '禁用', value: 2 }],
-        defaultValue: _.get(defaultValue, 'stateEnum'),
+        defaultValue: get(defaultValue, 'stateEnum'),
       },
     ];
 

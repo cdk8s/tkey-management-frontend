@@ -1,4 +1,4 @@
-import {IConfig} from 'umi-types';
+import { IConfig } from 'umi-types';
 
 import routes from './config/router.config';
 import plugins from './config/plugins.config';
@@ -21,13 +21,36 @@ const config: IConfig = {
     plugins,
     routes,
     theme,
+    ignoreMomentLocale: true,
     define: constant.constant.devConstant,
     proxy: {
         [constant.constant.devConstant['process.env.API_SERVER']]: {
             target: 'http://management.cdk8s.com:9095',
-            pathRewrite: {[`^/${constant.constant.devConstant['process.env.API_SERVER']}`]: ''},
+            pathRewrite: { [`^/${constant.constant.devConstant['process.env.API_SERVER']}`]: '' },
             changeOrigin: true,
         },
+    },
+    chainWebpack: function(config: any, { webpack }: any) {
+        config.merge({
+            optimization: {
+                minimize: true,
+                splitChunks: {
+                    chunks: 'all',
+                    minSize: 30000,
+                    minChunks: 3,
+                    automaticNameDelimiter: '.',
+                    cacheGroups: {
+                        vendor: {
+                            name: 'vendors',
+                            test({ resource }: any) {
+                                return /[\\/]node_modules[\\/]/.test(resource);
+                            },
+                            priority: 10,
+                        },
+                    },
+                },
+            },
+        });
     },
 };
 

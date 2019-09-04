@@ -13,11 +13,11 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "@types/progress": "^2.0.3",
     "antd": "^3.22.0",
     "crypto-random-string": "^3.0.1",
     "dva": "^2.6.0-beta.6",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.15",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
     "qs": "^6.7.0",
@@ -33,6 +33,7 @@
     "@types/jest": "^23.3.12",
     "@types/lodash": "^4.14.136",
     "@types/nprogress": "^0.2.0",
+    "@types/progress": "^2.0.3",
     "@types/qs": "^6.5.3",
     "@types/random": "^2.1.0",
     "@types/react": "^16.7.18",

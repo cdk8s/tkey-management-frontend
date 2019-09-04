@@ -15,6 +15,7 @@ const config: IConfig = {
     targets: {
         ie: 11,
     },
+    ignoreMomentLocale:true,
     disableCSSModules: true,
     lessLoaderOptions: {
         javascriptEnabled: true,

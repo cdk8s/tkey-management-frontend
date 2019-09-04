@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Icon, Layout, Menu, Avatar, Dropdown, Drawer, Select, BackTop, ConfigProvider } from 'antd';
 import { connect } from 'dva';
-import _ from 'lodash';
+import filter from 'lodash/filter';
+import cloneDeep from 'lodash/cloneDeep';
 import router from 'umi/router';
 import classname from 'classnames';
 import zhCN from 'antd/es/locale/zh_CN';
@@ -11,6 +12,7 @@ import theme from '@/constants/theme';
 import siderMenu from '@/constants/siderMenu';
 import HehRouterTabs from '@/components/HehRouterTabs';
 import './mainLayout.less';
+import 'moment/locale/zh-cn';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -167,7 +169,7 @@ class MainLayout extends Component<IProps> {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
     const { routerTabs } = this.props.global;
-    let newRouterTabs = _.cloneDeep(routerTabs);
+    let newRouterTabs = cloneDeep(routerTabs);
     // @ts-ignore
     newRouterTabs.push({ name, path });
     this.props.dispatch({
@@ -180,9 +182,9 @@ class MainLayout extends Component<IProps> {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
     const { routerTabs } = this.props.global;
-    let newRouterTabs = _.cloneDeep(routerTabs);
+    let newRouterTabs = cloneDeep(routerTabs);
     // @ts-ignore
-    newRouterTabs = _.filter(newRouterTabs, (n: any) => {
+    newRouterTabs = filter(newRouterTabs, (n: any) => {
       return n.path !== path;
     });
     this.props.dispatch({
